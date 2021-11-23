@@ -12,7 +12,7 @@ console.log(`📮 Se ha solicitado el siguiente recurso: ${method}: ${url}`);
 
     // filtrar la url 
     if(url === '/'){
-    // Respuesta ante "Get /"   
+   u// Respuesta ante "Get /"   
     // 1. Estableciendo el tipo de retorno   
     // como HTML    
     res.setHeader('Content-Type', 'text/html');
@@ -48,13 +48,28 @@ console.log(`📮 Se ha solicitado el siguiente recurso: ${method}: ${url}`);
       if(body.length > 1e6 ) req.socket.destroy();
       });
 
+      //EjecutandoOperacion (ARG1, ARG2, ARG3, cb)
+      //Modelo Asincrono 
+      //
+
       //3.1 Registrando un manejaor  de fin de recepcion de datos
       req.on("end", () => {
         const parseBody = Buffer.concat(body).toString();
         const message = parseBody.split("=")[1];
         //Guardando el mensaje en un archivo
-        fs.writeFileSync('message.txt', message);
-        //Estableciendo codigo
+        fs.writeFile('message.txt', message, (err)=>{
+          //verificar su hubo un error
+          if(err){
+            console.log("> No se pude graba archivo"),
+            res.statusCode = 500; //Internal Server Error
+            
+            res.setHeader("Content-Type", "text,html");
+            res.write("Error when loading file")
+            return res.end();
+
+            }
+        });
+
         res.status = 302;
         res.setHeader('Location', '/');
         //Finalizando conexion
