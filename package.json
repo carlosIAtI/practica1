@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "echo \"Iniciando Programa... 💽\" && node index",
-    "dev": "set enviroment=DEVELOPMENT && node index",
+    "dev": "set enviroment=DEVELOPMENT && nodemon  index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,5 +23,8 @@
     "url": "https://github.com/carlosIAtI/practica1/issues"
   },
   "homepage": "https://github.com/carlosIAtI/practica1#readme",
-  "type":"module"
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
