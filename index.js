@@ -5,25 +5,19 @@ import Expres from 'express'
 
 //Crear una instancia de express
 const app = Expres();
-
 //Registrando el primer middleware
-app.use((req, res, next)=>{
-  console.log("Estoy en el middleware 1");
-  // Dar la instruccion de pasar al siguiente middleware
-  next()
-});
-app.use((req, res, next)=>{
-  console.log("Estoy en el middleware 2");
-  // Dar la instruccion de pasar al siguiente middleware
-  next()
-});
-
-app.use((_, res)=>{
-  console.log("Estoy en el middleware 3");
-  console.log("Emitiendo respuestas a cliente");
-  res.end("<h1>Hola Mundo!!</h1>");
+//se debe color primero ya que el orden de registro 
+//determina el orden 
+app.use('/about',(_, res)=>{
+  console.log('Esto haciendo peticion para : "/about"');
+  res.end("<h1>Peticion a ruta about</h1>");
   // Dar la instruccion de pasar al siguiente middleware
   
+}), 
+app.use('/home', (_, res)=>{
+  console.log('Esto haciendo peticion para : "/home"');
+  res.end("<h1>Hola Mundo!!</h1>");
+
 });
 
 // poniendo a escuchar la aplicacion de express
