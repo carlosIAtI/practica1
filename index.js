@@ -14,7 +14,7 @@ app.use('/about',(_, res)=>{
   // Dar la instruccion de pasar al siguiente middleware
   
 }), 
-app.use('/home', (_, res)=>{
+app.use(['/','/home'] (_, res)=>{
   console.log('Esto haciendo peticion para : "/home"');
   res.end("<h1>Hola Mundo!!</h1>");
 
