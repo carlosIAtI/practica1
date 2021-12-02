@@ -1,5 +1,4 @@
 // 1. Importar el modulo http
-import http from "http";
 import routes from "./routes.js"
 import Express from 'express'
 
@@ -35,7 +34,7 @@ app.use('/add-student-form', (_, res)=>{
 
 });
 
-app.use('/add-student', (req, res, next)=>{
+app.post('/add-student', (req, res, next)=>{
   for(const prop in req.body ){
 
     console.log(`${prop}: ${req.body[prop]}`);
