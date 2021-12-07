@@ -26,6 +26,11 @@ app.use('/admin', adminRoute);
 // Se agrega a la aplicación la ruta admin
 app.use(homeRoute);
 
+// 404 error page
+app.use((req, res, next)=>{
+  res.status(404).send('<h1>Recurso no Encontrado</h1>')
+});
+
 /**
  * Codigos de Emojies
  * Ref: https://www.w3schools.com/charsets/ref_emoji.asp
