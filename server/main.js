@@ -1,10 +1,16 @@
 // Importando express
 // $ npm i express -S
 import Express from 'express'
+//importando helpers
+//
+import path from 'path'
+
+import { ROOT_DIR } from './helpers/path.helper.js'
 
 // Importar enrutadores
 import adminRoute from './routes/admin.route.js';
 import homeRoute from './routes/home.route.js';
+
 
 console.log(`Variable de entorno: ${process.env.NODE_ENV}`);
 
@@ -28,7 +34,8 @@ app.use(homeRoute);
 
 // 404 error page
 app.use((req, res, next)=>{
-  res.status(404).send('<h1>Recurso no Encontrado</h1>')
+  const filepath = path.join(ROOT_DIR, "server", "views", "not-found.html")
+  res.sendFile(filepath);
 });
 
 /**

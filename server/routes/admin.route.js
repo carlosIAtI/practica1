@@ -1,20 +1,17 @@
 // 1 Importando el enrutador de Express
 import { Router } from 'express';
+import path from 'path'
+import { ROOT_DIR } from '../helpers/path.helper.js'
 
 // 2 Crear una instancia del enrutador
 const router = Router();
-
+ 
 // 3 Registrar rutas a mi enrutador
 // Sirve el formulario para agregar productos
 // GET: /admin/add-product
 router.get('/add-product',(_, res)=>{
-  res.send(`
-  <form action="add-product" method="POST">
-    <label for="product-name">☕ Nombre de producto</label>
-    <input type="text" name="name" id="product-name">
-    <button type="submit">Agregar producto</button>
-  </form>
-  `);
+  const filepath = path.join(ROOT_DIR, "server", "views", "add-product.html")
+  res.sendFile(filepath);
 });
 // Procesa el formulario para agregar productos
 // POST: /admin/add-product

@@ -3,6 +3,9 @@ import { Router } from 'express';
 
 import path from 'path'
 
+//importando helper
+import { ROOT_DIR  } from '../helpers/path.helper.js'
+
 // 2 Crear una instancia del enrutador
 const router = Router();
 
@@ -14,7 +17,7 @@ router.get('/about',(_,res)=>{
 
 // La ruta raíz entra en todo tipo de petición
 router.get(['/','/home'],(_, res)=>{
-  const filepath = path.join(path.resolve(), "server", "views", "shop.html");
+  const filepath = path.join(ROOT_DIR, "server", "views", "shop.html");
   res.sendFile(filepath);
 });
 
