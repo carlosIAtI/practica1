@@ -8,7 +8,7 @@ import path from 'path'
 import { ROOT_DIR } from './helpers/path.helper.js'
 
 // Importar enrutadores
-import adminRoute from './routes/admin.route.js';
+import { router  as adminRoute  } from './routes/admin.route.js';
 import homeRoute from './routes/home.route.js';
 
 
@@ -27,6 +27,8 @@ app.use((req,_,next)=>{
   next();
 });
 
+//Agregar servidor 
+app.use(Express.static(path.join(ROOT_DIR, 'public'))); 
 // Se agrega a la aplicación la ruta admin
 app.use('/admin', adminRoute);
 // Se agrega a la aplicación la ruta admin
@@ -44,6 +46,6 @@ app.use((req, res, next)=>{
  */
 
 // Poniendo a escuchar la app de express
-app.listen(3000,'0.0.0.0',() => {
-  console.log("👩‍🍳 Servidor escuchando en http://0.0.0.0:3000");
+app.listen(3000,'127.0.0.1',() => {
+  console.log("👩‍🍳 Servidor escuchando en http:127.0.0.1:3000");
 });

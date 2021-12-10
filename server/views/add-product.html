@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="x-UA-Compatible" content="IE-edge">
-		<meta name="viewport" content="wdth-device-width, initial-scale=1.0">
-		<title>Document</title>
-	</head>
-	<body>
-		<header>
-			<nav>
-				<ul>
-					<li><a herf= "/">Tienda</a></li>
-					<li><a herf= "/add-product">Agregar product</a></li>
-				</ul>
-			</nav>
-		</header>
-		<main>
-				<form action="add-product" method="POST">
-					<label for="product-name">☕ Nombre de producto</label>
-					<input type="text" name="name" id="product-name"/>
-					<button type="submit">Agregar producto</button>
-				</form>
-		</main>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/add-product.css">
+    <link rel="stylesheet" href="/styles/global.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Encabezado de la pagina -->
+    <header class="main-header"> 
+      <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+          <li class="main-header__item"><a href="/">🛒 Tienda</a></li>
+          <li class="main-header__item">
+            <a class="active" href="/admin/add-product">➕ Agregar producto</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Sección principal de la página -->
+    <main>
+      <form class="product-form" action="add-product" method="POST">
+        <div class="form-control">
+          <label for="product-name">☕ Nombre de producto</label>
+          <input type="text" name="name" id="product-name" />
+          <button type="submit">Agregar producto</button>
+        </div>
+      </form>
+    </main>
+  </body>
 </html>
